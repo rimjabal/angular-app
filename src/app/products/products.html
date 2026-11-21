@@ -1,0 +1,51 @@
+<div class="p-3">
+  <div class="card-body">
+    <h3>Products Component</h3>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Selected</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      @if (products.length > 0) {
+        <tbody>
+          @for (p of products; track p.id) {
+            <tr>
+              <td>{{ p.id }}</td>
+              <td>{{ p.name }}</td>
+              <td>{{ p.price }}</td>
+              <td>
+                @if (p.selected) {
+                  <i class="bi bi-check-circle text-success"></i>
+                } @else {
+                  <i class="bi bi-circle text-secondary"></i>
+                }
+              </td>
+              <td>
+                <button
+                  (click)="handleDelete(p)"
+                  class="btn btn-outline-danger btn-sm"
+                  title="Delete product"
+                >
+                  <i class="bi bi-trash"></i>
+                </button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      } @else {
+        <tbody>
+          <tr>
+            <td colspan="5" class="text-muted">No products left.</td>
+          </tr>
+        </tbody>
+      }
+    </table>
+  </div>
+</div>
